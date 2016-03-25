@@ -1,0 +1,25 @@
+{
+    "builders": [
+        {
+            "type": "docker",
+            "image": "jfusterm/ansible",
+            "commit": true
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "ansible-local",
+            "playbook_dir": "ansible",
+            "playbook_file": "ansible/wordpress.yml"
+        }
+    ],
+    "post-processors": [
+        [
+            {
+                "type": "docker-tag",
+                "repository": "jfusterm/wp-packer",
+                "tag": "4.4.2"
+            }
+        ]
+    ]
+}

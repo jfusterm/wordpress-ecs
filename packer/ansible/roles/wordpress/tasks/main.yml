@@ -29,3 +29,10 @@
   file:
      path=/wordpress.tar.gz
      state=absent
+
+- name: apk | Remove cache
+  file: 
+     state=absent 
+     path={{ item }}
+  with_fileglob:
+     - /var/cache/apk/*

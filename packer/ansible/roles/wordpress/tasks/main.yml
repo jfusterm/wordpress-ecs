@@ -24,3 +24,8 @@
      src=entrypoint.sh
      dest=/
      mode=777
+
+- name: Wordpress | Remove wordpress.tar.gz
+  file:
+     path=/wordpress.tar.gz
+     state=absent

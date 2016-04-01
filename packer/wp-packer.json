@@ -19,6 +19,13 @@
                 "type": "docker-tag",
                 "repository": "jfusterm/wp-packer",
                 "tag": "4.4.2"
+            },
+            {
+                "type": "docker-push",
+                "login": "true",
+                "login_username": "jfusterm",
+                "login_password": "",
+                "login_email": "joan.fuster@gmail.com"
             }
         ]
     ]

@@ -30,6 +30,11 @@
      path=/wordpress.tar.gz
      state=absent
 
+- name: apk | Install curl
+  apk: 
+     name=curl
+     state=present 
+
 - name: apk | Remove cache
   file: 
      state=absent 

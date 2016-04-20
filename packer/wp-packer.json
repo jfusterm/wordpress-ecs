@@ -18,7 +18,7 @@
             {
                 "type": "docker-tag",
                 "repository": "jfusterm/wp-packer",
-                "tag": "4.4.2"
+                "tag": "4.5"
             },
             {
                 "type": "docker-push",

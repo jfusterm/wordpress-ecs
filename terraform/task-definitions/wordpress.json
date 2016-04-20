@@ -35,6 +35,22 @@
           {
             "name": "WORDPRESS_DB_NAME",
             "value": "${db_name}"
+          },
+          {
+            "name": "WORDPRESS_TITLE",
+            "value": "${wp_title}"
+          },
+          {
+            "name": "WORDPRESS_USER",
+            "value": "${wp_user}"
+          },
+          {
+            "name": "WORDPRESS_PASSWORD",
+            "value": "${wp_password}"
+          },
+          {
+            "name": "WORDPRESS_MAIL",
+            "value": "${wp_mail}"
           }
         ],
         "mountPoints": null,

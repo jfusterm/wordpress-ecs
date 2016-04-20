@@ -79,3 +79,23 @@ variable "db_password" {
   description = "RDS DB password"
   default = "Qwerty12345-"
 }
+
+variable "wp_title" {
+  description = "Wordpress title"
+  default = "My Wordpress on ECS"
+}
+
+variable "wp_user" {
+  description = "Wordpress username"
+  default = "admin"
+}
+
+variable "wp_password" {
+  description = "Wordpress password"
+  default = "Qwerty12345-"
+}
+
+variable "wp_mail" {
+  description = "Wordpress email"
+  default = "joan.fuster@gmail.com"
+}

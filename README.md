@@ -73,7 +73,7 @@ The RDS connection parameters will be passed on runtime to the Wordpress contain
 This example uses a basic and simple approach to get a ready to use Wordpress using different technology. Further modifications will be done to get a fully automated, scalable and high available Wordpress. Some thoughts:
 
 * Wrap all the steps in a single script: build the container, push the container to Dockerhub or a private registry and finally deploy all the infrastructure on AWS.
-* Automate Wordpress installation when the first instance is launched. **Note**: Currently the ELB won't work properly due to the health-checks configuration until Wordpress is installed from one of the Worpress instances.
+* ~~Automate Wordpress installation when the first instance is launched. **Note**: Currently the ELB won't work properly due to the health-checks configuration until Wordpress is installed from one of the Worpress instances.~~
 * Distribute the ECS Container Instances across different availability zones and route the traffic using the ELB among them.
 * Decouple Nginx and PHP-FPM in separate containers so can be scaled independently.
 * Use a shared or distributed storage system to persist Wordpress' data. Examples:

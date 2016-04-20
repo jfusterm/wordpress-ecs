@@ -25,6 +25,12 @@
      dest=/
      mode=777
 
+- name: Wordpress | Copy install-wp.sh
+  copy:
+     src=install-wp.sh
+     dest=/
+     mode=777
+
 - name: Wordpress | Remove wordpress.tar.gz
   file:
      path=/wordpress.tar.gz

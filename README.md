@@ -25,7 +25,7 @@ To use this example you will need an [AWS](https://aws.amazon.com/es/) account a
 
 1. Build the Wordpress container.
 
-Packer will use a [base Docker image with Ansible](https://github.com/titanlien/dockerfiles/blob/master/ansible/Dockerfile) to provision all the applications needed to run a Wordpress. The result will be saved into a container named `titanlien/wp-packer` with a version tag `4.5`.
+Packer will use a [base Docker image with Ansible](https://github.com/titanlien/wordpress-ecs/blob/master/Dockerfile) to provision all the applications needed to run a Wordpress. The result will be saved into a container named `titanlien/wp-packer` with a version tag `4.5`.
 
 **Note**: If you want to change the image tag you have to change it in `wp-packer.json` and `wordpress.json`.
 

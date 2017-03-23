@@ -25,7 +25,7 @@ To use this example you will need an [AWS](https://aws.amazon.com/es/) account a
 
 1. Build the Wordpress container.
 
-Packer will use a [base Docker image with Ansible](https://github.com/jfusterm/dockerfiles/blob/master/ansible/Dockerfile) to provision all the applications needed to run a Wordpress. The result will be saved into a container named `jfusterm/wp-packer` with a version tag `4.4.2`.
+Packer will use a [base Docker image with Ansible](https://github.com/titanlien/dockerfiles/blob/master/ansible/Dockerfile) to provision all the applications needed to run a Wordpress. The result will be saved into a container named `titanlien/wp-packer` with a version tag `4.5`.
 
 **Note**: If you want to change the image tag you have to change it in `wp-packer.json` and `wordpress.json`.
 
@@ -41,14 +41,14 @@ Check that the image is ready.
 # docker images
 
 REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
-jfusterm/wp-packer        4.4.2               60bfb4ef7e9d        3 hours ago         138.2 MB
+titanlien/wp-packer        4.5               b269eb1b9dd9        3 hours ago         135 MB
 ```
 
 Then you can push it to Dockerhub.
 
 ```
 # docker login
-# docker push jfusterm/wp-packer:4.4.2
+# docker push titanlien/wp-packer:4.5
 ```
 
 3. Deploy all the infrastructure needed on AWS using Terraform.

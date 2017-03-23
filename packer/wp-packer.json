@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "docker",
-            "image": "jfusterm/ansible",
+            "image": "titanlien/ansible",
             "commit": true
         }
     ],
@@ -17,15 +17,14 @@
         [
             {
                 "type": "docker-tag",
-                "repository": "jfusterm/wp-packer",
+                "repository": "titanlien/wp-packer",
                 "tag": "4.5"
             },
             {
                 "type": "docker-push",
                 "login": "true",
-                "login_username": "jfusterm",
-                "login_password": "",
-                "login_email": "joan.fuster@gmail.com"
+                "login_username": "titanlien",
+                "login_password": ""
             }
         ]
     ]

@@ -10,6 +10,7 @@
   unarchive:
      src=/wordpress.tar.gz
      dest=/usr/share/nginx/html
+     remote_src=yes
 
 - name: Wordpress | Set permissions
   file:

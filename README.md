@@ -52,9 +52,10 @@ Then you can push it to Dockerhub.
 ```
 
 3. Deploy all the infrastructure needed on AWS using Terraform.
-
-```
-# terraform apply
+  1. Create a amazon role, *ecsInstanceRole*, to handle the EC2 resource.
+  2.  Launching stack by following command.
+```bash
+# env TF_VAR_aws_access_key=$AWS_ACCESS_KEY TF_VAR_aws_secret_key=$AWS_SCERET_KEY TF_VAR_key_name=titan@MBA terraform apply
 ```
 
 Once deployed, Terraform will display the ECS Container Instances public IPs and the [ELB](https://aws.amazon.com/es/elasticloadbalancing/) URL that will distribute the traffic across the different Wordpress container instances.

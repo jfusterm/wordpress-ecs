@@ -20,4 +20,5 @@ resource "aws_db_instance" "wordpress" {
     db_subnet_group_name   = "${aws_db_subnet_group.default.id}"
     parameter_group_name   = "default.mysql5.7"
     publicly_accessible    = false
+    skip_final_snapshot    = true
 }

@@ -52,9 +52,10 @@ Then you can push it to Dockerhub.
 ```
 
 3. Deploy all the infrastructure needed on AWS using Terraform.
-  1. Create a amazon role, *ecsInstanceRole*, to handle the EC2 resource.
-  2.  Launching stack by following command.
-```bash
+3.1. Create a amazon role, **ecsInstanceRole**, to handle the EC2 resource.
+3.2. Launching stack by following command.
+
+```
 # env TF_VAR_aws_access_key=$AWS_ACCESS_KEY TF_VAR_aws_secret_key=$AWS_SCERET_KEY TF_VAR_key_name=titan@MBA terraform apply
 ```
 

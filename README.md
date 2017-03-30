@@ -77,7 +77,8 @@ This example uses a basic and simple approach to get a ready to use Wordpress us
 * Distribute the ECS Container Instances across different availability zones and route the traffic using the ELB among them.
 * Decouple Nginx and PHP-FPM in separate containers so can be scaled independently.
 
-## Todo:
+## Todo
+* Need fixing the launching php-fpm error.
 * Sending log to [ELK](https://www.elastic.co/products) or [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/).
 * Setting [cloudwtach](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html) to monitor CPU, memory and network traffic.
 * Use a shared or distributed storage system to persist Wordpress' data. Examples:

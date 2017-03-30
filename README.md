@@ -44,7 +44,7 @@ REPOSITORY                 TAG                 IMAGE ID            CREATED      
 titanlien/wp-packer        4.5               b269eb1b9dd9        3 hours ago         135 MB
 ```
 
-Then you can push it to Dockerhub.
+Then you also can push it to Dockerhub manually.
 
 ```
 # docker login
@@ -52,10 +52,9 @@ Then you can push it to Dockerhub.
 ```
 
 3. Deploy all the infrastructure needed on AWS using Terraform.
-3.1. Create a amazon role, **ecsInstanceRole**, to handle the EC2 resource.
-3.2. Launching stack by following command.
-
-```
+4. Create a amazon role, *qq-ecs-role*, to handle the EC2 resource.
+5. Launching stack by following command.
+```bash
 # env TF_VAR_aws_access_key=$AWS_ACCESS_KEY TF_VAR_aws_secret_key=$AWS_SCERET_KEY TF_VAR_key_name=titan@MBA terraform apply
 ```
 
@@ -63,7 +62,7 @@ Once deployed, Terraform will display the ECS Container Instances public IPs and
 
 The RDS connection parameters will be passed on runtime to the Wordpress containers via environment variables.
 
-4. Once not needed, we can remove all the AWS infrastructure:
+6. Once not needed, we can remove all the AWS infrastructure:
 
 
 ```
@@ -75,9 +74,13 @@ The RDS connection parameters will be passed on runtime to the Wordpress contain
 This example uses a basic and simple approach to get a ready to use Wordpress using different technology. Further modifications will be done to get a fully automated, scalable and high available Wordpress. Some thoughts:
 
 * Wrap all the steps in a single script: build the container, push the container to Dockerhub or a private registry and finally deploy all the infrastructure on AWS.
-* ~~Automate Wordpress installation when the first instance is launched. **Note**: Currently the ELB won't work properly due to the health-checks configuration until Wordpress is installed from one of the Worpress instances.~~
 * Distribute the ECS Container Instances across different availability zones and route the traffic using the ELB among them.
 * Decouple Nginx and PHP-FPM in separate containers so can be scaled independently.
+
+## Todo
+* Need fixing the launching php-fpm error.
+* Sending log to [ELK](https://www.elastic.co/products) or [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/).
+* Setting [cloudwtach](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html) to monitor CPU, memory and network traffic.
 * Use a shared or distributed storage system to persist Wordpress' data. Examples:
     * [Amazon EFS](https://aws.amazon.com/efs/)
     * [GlusterFS](https://www.gluster.org/)

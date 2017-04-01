@@ -70,7 +70,7 @@ This example uses a basic and simple approach to get a ready to use Wordpress us
 * Wrap all the steps in a single script: build the container, push the container to Dockerhub or a private registry and finally deploy all the infrastructure on AWS.
 * Distribute the ECS Container Instances across different availability zones and route the traffic using the ELB among them.
 * Decouple Nginx and PHP-FPM in separate containers so can be scaled independently.
-* Need fixing the launching php-fpm error, *php-fpm entered FATAL state, too many start retries too quickly.*
+
 * Sending log to [ELK](https://www.elastic.co/products) or [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/).
 * Setting [cloudwtach](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html) to monitor CPU, memory and network traffic.
 * Use a shared or distributed storage system to persist Wordpress' data. Examples:
@@ -80,3 +80,24 @@ This example uses a basic and simple approach to get a ready to use Wordpress us
 * Remove the RDS single point of failure. Examples:
     * Deploy RDS on [Multi-AZ](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)
     * Use [Percona XtraDB Cluster](https://www.percona.com/software/mysql-database/percona-xtradb-cluster)
+
+## TODO
+
+* Need fixing the launching php-fpm error, *php-fpm entered FATAL state, too many start retries too quickly.*
+
+```bash
+[ec2-user@ip-10-1-1-32 ~]$ docker logs ecs-agent
+2017-04-01T04:03:48Z [INFO] Starting Agent: Amazon ECS Agent - v1.14.1 (467c3d7)
+2017-04-01T04:03:48Z [INFO] Loading configuration
+2017-04-01T04:03:48Z [INFO] Checkpointing is enabled. Attempting to load state
+2017-04-01T04:03:48Z [INFO] Loading state! module="statemanager"
+2017-04-01T04:03:48Z [INFO] Event stream ContainerChange start listening...
+2017-04-01T04:03:48Z [INFO] Detected Docker versions [1.17 1.18 1.19 1.20 1.21 1.22 1.23]
+2017-04-01T04:03:48Z [WARN] Error getting valid credentials (AKID ): NoCredentialProviders: no valid providers in chain. Deprecated.
+	For verbose messaging see aws.Config.CredentialsChainVerboseErrors
+2017-04-01T04:03:48Z [INFO] Registering Instance with ECS
+2017-04-01T04:03:48Z [ERROR] Could not register: NoCredentialProviders: no valid providers in chain. Deprecated.
+	For verbose messaging see aws.Config.CredentialsChainVerboseErrors
+2017-04-01T04:03:48Z [ERROR] Error registering: NoCredentialProviders: no valid providers in chain. Deprecated.
+	For verbose messaging see aws.Config.CredentialsChainVerboseErrors
+```

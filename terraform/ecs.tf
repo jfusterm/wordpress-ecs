@@ -68,7 +68,10 @@ resource "aws_iam_role" "qq-ecs-role" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "ecs.amazonaws.com"
+        "Service": [
+                    "ecs.amazonaws.com",
+                    "ec2.amazonaws.com"
+        ]
       },
       "Effect": "Allow",
       "Sid": ""

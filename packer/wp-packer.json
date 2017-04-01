@@ -1,6 +1,6 @@
 {
   "variables": {
-    "docker_passwd": "{{env `DOCKER_PASSWD`}}"
+    "docker_passwd": ""
   },
   "builders": [
         {
@@ -27,7 +27,7 @@
                 "type": "docker-push",
                 "login": "true",
                 "login_username": "titanlien",
-                "login_password": "{{user docker_passwd`}}"
+                "login_password": "{{user `docker_passwd`}}"
             }
         ]
     ]

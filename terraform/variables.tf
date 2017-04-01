@@ -47,7 +47,7 @@ variable "amis" {
     eu-west-1      = "ami-9c9819ef"
     us-east-1      = "ami-67a3a90d"
     us-west-1      = "ami-b7d5a8d7"
-    us-west-2      = "ami-c7a451a7"
+    us-west-2      = "ami-62d35c02"
   }
 }
 
@@ -97,5 +97,5 @@ variable "wp_password" {
 
 variable "wp_mail" {
   description = "Wordpress email"
-  default = "joan.fuster@gmail.com"
+  default = "titan.lien@gmail.com"
 }

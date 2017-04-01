@@ -27,13 +27,14 @@ To use this example you will need an [AWS](https://aws.amazon.com/es/) account a
 
 Packer will use a [base Docker image with Ansible](https://github.com/titanlien/wordpress-ecs/blob/master/Dockerfile) to provision all the applications needed to run a Wordpress. The result will be saved into a container named `titanlien/wp-packer` with a version tag `4.5`.
 
-**Note**: If you want to change the image tag you have to change it in `wp-packer.json` and `wordpress.json`.
+**Note 1**: If you want to change the image tag you have to change it in `wp-packer.json` and `wordpress.json`.
+
+**Note 2**: Packer will push the image to [Dockerhub](https://hub.docker.com/) automatically.
+
 
 ```
-# packer build wp-packer.json
+# packer build -var 'DOCKER_PASSWD=[SECURITY]' wp-packer.json
 ```
-
-2. Push the container to [Dockerhub](https://hub.docker.com/)
 
 Check that the image is ready.
 
@@ -44,16 +45,9 @@ REPOSITORY                 TAG                 IMAGE ID            CREATED      
 titanlien/wp-packer        4.5               b269eb1b9dd9        3 hours ago         135 MB
 ```
 
-Then you also can push it to Dockerhub manually.
-
-```
-# docker login
-# docker push titanlien/wp-packer:4.5
-```
-
-3. Deploy all the infrastructure needed on AWS using Terraform.
-4. Create a amazon role, *qq-ecs-role*, to handle the EC2 resource.
-5. Launching stack by following command.
+2. Deploy all the infrastructure needed on AWS using Terraform.
+3. Create a amazon role, *qq-ecs-role*, to handle the EC2 resource.
+4. Launching stack by following command.
 ```bash
 # env TF_VAR_aws_access_key=$AWS_ACCESS_KEY TF_VAR_aws_secret_key=$AWS_SCERET_KEY TF_VAR_key_name=titan@MBA terraform apply
 ```
@@ -62,7 +56,7 @@ Once deployed, Terraform will display the ECS Container Instances public IPs and
 
 The RDS connection parameters will be passed on runtime to the Wordpress containers via environment variables.
 
-6. Once not needed, we can remove all the AWS infrastructure:
+5. Once not needed, we can remove all the AWS infrastructure:
 
 
 ```
@@ -76,8 +70,6 @@ This example uses a basic and simple approach to get a ready to use Wordpress us
 * Wrap all the steps in a single script: build the container, push the container to Dockerhub or a private registry and finally deploy all the infrastructure on AWS.
 * Distribute the ECS Container Instances across different availability zones and route the traffic using the ELB among them.
 * Decouple Nginx and PHP-FPM in separate containers so can be scaled independently.
-
-## Todo
 * Need fixing the launching php-fpm error, *php-fpm entered FATAL state, too many start retries too quickly.*
 * Sending log to [ELK](https://www.elastic.co/products) or [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/).
 * Setting [cloudwtach](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html) to monitor CPU, memory and network traffic.

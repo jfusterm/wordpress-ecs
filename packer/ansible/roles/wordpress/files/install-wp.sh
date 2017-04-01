@@ -2,7 +2,7 @@
 
 set -e
 
-EC2_PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
+EC2_PUBLIC_IP=$(curl -s http://whatismyip.akamai.com/)
 WP_INSTALL_URL="http://$EC2_PUBLIC_IP/wp-admin/install.php?step=2"
 
 # Wait random time between 1s and 15s so the container with the lowest wait installs Wordpress, not all at once.

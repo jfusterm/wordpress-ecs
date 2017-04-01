@@ -1,5 +1,8 @@
 {
-    "builders": [
+  "variables": {
+    "docker_passwd": "{{env `DOCKER_PASSWD`}}"
+  },
+  "builders": [
         {
             "type": "docker",
             "image": "titanlien/ansible",
@@ -24,7 +27,7 @@
                 "type": "docker-push",
                 "login": "true",
                 "login_username": "titanlien",
-                "login_password": ""
+                "login_password": "{{user docker_passwd`}}"
             }
         ]
     ]

@@ -48,7 +48,11 @@ resource "aws_iam_role_policy" "qq-ecs-policy" {
         "ec2:Describe*",
         "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
         "elasticloadbalancing:Describe*",
-        "elasticloadbalancing:RegisterInstancesWithLoadBalancer"
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogStreams"
       ],
       "Resource": "*"
     }
@@ -68,10 +72,7 @@ resource "aws_iam_role" "qq-ecs-role" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": [
-                    "ecs.amazonaws.com",
-                    "ec2.amazonaws.com"
-        ]
+        "Service": "ec2.amazonaws.com"
       },
       "Effect": "Allow",
       "Sid": ""

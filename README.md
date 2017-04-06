@@ -81,22 +81,7 @@ This example uses a basic and simple approach to get a ready to use Wordpress us
     * Deploy RDS on [Multi-AZ](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)
     * Use [Percona XtraDB Cluster](https://www.percona.com/software/mysql-database/percona-xtradb-cluster)
 
-## TODO
+## Sample ELB page
+![alt text][demo]
 
-* Need fix the launching container permission issue.
-
-```bash
-[ec2-user@ip-10-1-1-94 ~]$ docker logs ecs-agent
-2017-04-06T14:49:49Z [INFO] Starting Agent: Amazon ECS Agent - v1.14.1 (467c3d7)
-2017-04-06T14:49:49Z [INFO] Loading configuration
-2017-04-06T14:49:49Z [INFO] Checkpointing is enabled. Attempting to load state
-2017-04-06T14:49:49Z [INFO] Loading state! module="statemanager"
-2017-04-06T14:49:49Z [INFO] Event stream ContainerChange start listening...
-2017-04-06T14:49:49Z [INFO] Detected Docker versions [1.17 1.18 1.19 1.20 1.21 1.22 1.23]
-2017-04-06T14:49:49Z [INFO] Registering Instance with ECS
-2017-04-06T14:49:49Z [ERROR] Could not register: AccessDeniedException: User: arn:aws:sts::333179329614:assumed-role/qq-ec2-role/i-0d647cc24ac374671 is not authorized to perform: ecs:RegisterContainerInstance on resource: arn:aws:ecs:us-west-2:333179329614:cluster/ecs-tf
-	status code: 400, request id: 48dab45b-1ad8-11e7-a4c4-3f4fae5e2b29
-2017-04-06T14:49:49Z [ERROR] Error registering: AccessDeniedException: User: arn:aws:sts::333179329614:assumed-role/qq-ec2-role/i-0d647cc24ac374671 is not authorized to perform: ecs:RegisterContainerInstance on resource: arn:aws:ecs:us-west-2:333179329614:cluster/ecs-tf
-	status code: 400, request id: 48dab45b-1ad8-11e7-a4c4-3f4fae5e2b29
-[ec2-user@ip-10-1-1-94 ~]$
-```
+[demo]: https://github.com/titanlien/wordpress-ecs/raw/master/raw/images/wp-demo.png "Wordpress Title Text 2"

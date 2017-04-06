@@ -63,9 +63,14 @@ EOF
   depends_on = ["aws_iam_role.qq-ecs-role"]
 }
 
-resource "aws_iam_role" "qq-ecs-role" {
-  name = "qq-ecs-role"
-  assume_role_policy = <<EOF
+resource "aws_iam_instance_profile" "web_instance_profile" {
+    name = "web_instance_profile"
+    roles = ["qq-ec2-role"]
+}
+
+resource "aws_iam_role" "qq-ec2-role" {
+    name = "qq-ec2-role"
+    assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -73,6 +78,26 @@ resource "aws_iam_role" "qq-ecs-role" {
       "Action": "sts:AssumeRole",
       "Principal": {
         "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+
+}
+
+resource "aws_iam_role" "qq-ecs-role" {
+    name = "qq-ecs-role"
+    assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ecs.amazonaws.com"
       },
       "Effect": "Allow",
       "Sid": ""

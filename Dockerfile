@@ -1,7 +1,7 @@
-FROM alpine:3.3
+FROM alpine:3.5
 MAINTAINER "Titan Lien" <titan.lien@gmail.com>
 
-ENV ANSIBLE_VERSION=2.2.1.0
+ENV ANSIBLE_VERSION=2.2.2.0
 
 RUN set -ex && \
     buildDeps="python-dev build-base libffi-dev openssl-dev" && \

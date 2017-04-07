@@ -11,7 +11,7 @@ resource "aws_ecs_service" "wp-ecs-svc" {
     name = "wp-ecs-svc-tf"
     cluster = "${aws_ecs_cluster.default.id}"
     task_definition = "${aws_ecs_task_definition.wordpress.arn}"
-    desired_count = 1
+    desired_count = 2
 
     iam_role = "${aws_iam_role.qq-ecs-role.id}"
 
@@ -20,7 +20,7 @@ resource "aws_ecs_service" "wp-ecs-svc" {
         container_name = "wordpress"
         container_port = 80
     }
-  depends_on = ["aws_iam_role.qq-ecs-role","aws_instance.ecs-instance01"]
+  depends_on = ["aws_iam_role.qq-ecs-role","aws_instance.ecs-instance01","aws_instance.ecs-instance02"]
 }
 
 resource "aws_iam_role_policy" "qq-ecs-policy" {

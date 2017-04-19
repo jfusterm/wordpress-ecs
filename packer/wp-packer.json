@@ -1,32 +1,34 @@
 {
-    "builders": [
+  "variables": {
+    "docker_passwd": ""
+  },
+  "builders": [
         {
             "type": "docker",
-            "image": "jfusterm/ansible",
+            "image": "titanlien/ansible:3.5",
             "commit": true
         }
     ],
-    "provisioners": [
-        {
-            "type": "ansible-local",
-            "playbook_dir": "ansible",
-            "playbook_file": "ansible/wordpress.yml"
-        }
-    ],
-    "post-processors": [
-        [
-            {
-                "type": "docker-tag",
-                "repository": "jfusterm/wp-packer",
-                "tag": "4.5"
-            },
-            {
-                "type": "docker-push",
-                "login": "true",
-                "login_username": "jfusterm",
-                "login_password": "",
-                "login_email": "joan.fuster@gmail.com"
-            }
-        ]
-    ]
+  "provisioners": [
+      {
+          "type": "ansible-local",
+          "playbook_dir": "ansible",
+          "playbook_file": "ansible/wordpress.yml"
+      }
+  ],
+  "post-processors": [
+      [
+          {
+              "type": "docker-tag",
+              "repository": "titanlien/wp-packer",
+              "tag": "4.7.3"
+          },
+          {
+              "type": "docker-push",
+              "login": "true",
+              "login_username": "titanlien",
+              "login_password": "{{user `docker_passwd`}}"
+          }
+      ]
+  ]
 }

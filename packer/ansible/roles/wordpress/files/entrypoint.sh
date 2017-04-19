@@ -2,7 +2,7 @@
 
 set -e
 
-cd /usr/share/nginx/html/wordpress
+cd /var/lib/nginx/html/wordpress
 
 if ! [ -e wp-config.php ] && [ -e wp-config-sample.php ]; then
 

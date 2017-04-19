@@ -4,16 +4,17 @@
      url=https://wordpress.org/wordpress-{{ wordpress_version }}.tar.gz
      dest=/wordpress.tar.gz
      checksum=md5:{{ wordpress_md5 }}
-     validate_certs=no # Alpine 3.3 doesn't recognize Godaddy's CA.
+     validate_certs=yes
 
 - name: Wordpress | Unarchive
   unarchive:
      src=/wordpress.tar.gz
-     dest=/usr/share/nginx/html
+     dest=/var/lib/nginx/html
+     remote_src=yes
 
 - name: Wordpress | Set permissions
   file:
-     path=/usr/share/nginx/html/wordpress
+     path=/var/lib/nginx/html/wordpress
      owner=nginx
      group=nginx
      state=directory

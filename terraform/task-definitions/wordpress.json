@@ -1,7 +1,7 @@
 [
     {
         "name": "wordpress",
-        "image": "jfusterm/wp-packer:4.5",
+        "image": "titanlien/wp-packer:4.5",
         "cpu": 10,
         "memory": 300,
         "essential": true,
@@ -56,7 +56,14 @@
         "mountPoints": null,
         "volumesFrom": null,
         "extraHosts": null,
-        "logConfiguration": null,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "ecs-log-streaming",
+            "awslogs-region": "us-west-2",
+            "awslogs-stream-prefix": "wp-packer"
+            }
+        },
         "ulimits": null,
         "dockerLabels": null
     }
